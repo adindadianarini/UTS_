@@ -44,58 +44,58 @@ System.out.println("Invalid choice. Please try again.");
 scanner.close();                                                   // Menutup objek Scanner untuk menghindari kebocoran sumber daya
   }
 
-    private static void displayMenu() { // Metode untuk menampilkan menu sistem
-        System.out.println("\n===== HOSPITAL QUEUE SYSTEM ====="); // Header menu
-        System.out.println("1. Add a new patient to the queue"); // Pilihan untuk menambah pasien
-        System.out.println("2. Serve next patient"); // Pilihan untuk melayani pasien berikutnya
-        System.out.println("3. Display current queue"); // Pilihan untuk menampilkan antrian pasien
-        System.out.println("4. Update patient priority"); // Pilihan untuk memperbarui prioritas pasien
-        System.out.println("5. Search for a patient"); // Pilihan untuk mencari pasien
-        System.out.println("6. Exit"); // Pilihan untuk keluar dari sistem
-        System.out.println("================================="); // Penutup menu
+private static void displayMenu() {                               // Metode untuk menampilkan menu sistem
+System.out.println("\n===== HOSPITAL QUEUE SYSTEM =====");        // Header menu
+System.out.println("1. Add a new patient to the queue");          // Pilihan untuk menambah pasien
+System.out.println("2. Serve next patient");                      // Pilihan untuk melayani pasien berikutnya
+System.out.println("3. Display current queue");                   // Pilihan untuk menampilkan antrian pasien
+System.out.println("4. Update patient priority");                 // Pilihan untuk memperbarui prioritas pasien
+System.out.println("5. Search for a patient");                    // Pilihan untuk mencari pasien
+System.out.println("6. Exit");                                    // Pilihan untuk keluar dari sistem
+System.out.println("=================================");          // Penutup menu
     }
 
-    private static void addPatient() { // Metode untuk menambahkan pasien ke antrian
-        System.out.println("\n--- Add New Patient ---"); // Menampilkan header untuk bagian ini
-        String name = getValidStringInput("Enter patient's name: "); // Input nama pasien
-        int age = getValidIntInput("Enter patient's age: "); // Input usia pasien
-        String condition = getValidStringInput("Enter condition description: "); // Input kondisi pasien
-        int priority = getValidIntInRange("Enter priority (1-Critical to 5-Non-urgent): ", 1, 5); // Input prioritas pasien
+private static void addPatient() {                                                         // Metode untuk menambahkan pasien ke antrian
+System.out.println("\n--- Add New Patient ---");                                           // Menampilkan header untuk bagian ini
+String name = getValidStringInput("Enter patient's name: ");                               // Input nama pasien
+int age = getValidIntInput("Enter patient's age: ");                                       // Input usia pasien
+String condition = getValidStringInput("Enter condition description: ");                   // Input kondisi pasien
+int priority = getValidIntInRange("Enter priority (1-Critical to 5-Non-urgent): ", 1, 5);  // Input prioritas pasien
 
-        Patient newPatient = new Patient(name, age, condition, priority); // Membuat objek pasien baru
+Patient newPatient = new Patient(name, age, condition, priority);                                  // Membuat objek pasien baru
 
         // Menyisipkan pasien berdasarkan prioritas (angka lebih kecil = prioritas lebih tinggi)
-        int index = 0; // Variabel untuk menentukan posisi penyisipan
-        while (index < patientQueue.size() && patientQueue.get(index).getPriority() <= priority) {
-            index++; // Iterasi hingga menemukan posisi yang sesuai untuk menyisipkan pasien
-        }
-        patientQueue.add(index, newPatient); // Menambahkan pasien pada posisi yang sesuai
-        System.out.println("Patient added successfully."); // Pesan konfirmasi
-    }
+int index = 0;                                                                                     // Variabel untuk menentukan posisi penyisipan
+while (index < patientQueue.size() && patientQueue.get(index).getPriority() <= priority) {
+index++;                                                                                           // Iterasi hingga menemukan posisi yang sesuai untuk menyisipkan pasien
+}
+patientQueue.add(index, newPatient);                                                               // Menambahkan pasien pada posisi yang sesuai
+System.out.println("Patient added successfully."); // Pesan konfirmasi
+}
 
-    private static void serveNextPatient() { // Metode untuk melayani pasien berikutnya
-        if (patientQueue.isEmpty()) { // Memeriksa apakah antrian kosong
-            System.out.println("No patients in queue."); // Menampilkan pesan jika antrian kosong
-        } else { // Jika ada pasien dalam antrian
-            Patient next = patientQueue.remove(0); // Menghapus pasien pertama dari antrian
-            System.out.println("Serving patient: " + next.getName() +
+private static void serveNextPatient() {                                                 // Metode untuk melayani pasien berikutnya
+if (patientQueue.isEmpty()) {                                                            // Memeriksa apakah antrian kosong
+System.out.println("No patients in queue.");                                             // Menampilkan pesan jika antrian kosong
+} else { // Jika ada pasien dalam antrian
+Patient next = patientQueue.remove(0);                                                  // Menghapus pasien pertama dari antrian
+System.out.println("Serving patient: " + next.getName() +
                 " | Age: " + next.getAge() +
                 " | Condition: " + next.getCondition() +
-                " | Priority: " + getPriorityText(next.getPriority())); // Menampilkan detail pasien yang sedang dilayani
+                " | Priority: " + getPriorityText(next.getPriority()));                 // Menampilkan detail pasien yang sedang dilayani
         }
     }
 
-    private static void displayQueue() { // Metode untuk menampilkan antrian pasien
-        if (patientQueue.isEmpty()) { // Memeriksa apakah antrian kosong
-            System.out.println("No patients in queue."); // Menampilkan pesan jika antrian kosong
-        } else { // Jika ada pasien dalam antrian
-            System.out.println("\n--- Current Patient Queue ---"); // Header untuk bagian ini
-            for (int i = 0; i < patientQueue.size(); i++) { // Iterasi melalui daftar pasien
-                Patient p = patientQueue.get(i); // Mendapatkan pasien pada posisi tertentu
-                System.out.println((i + 1) + ". " + p.getName() +
+private static void displayQueue() {                                                   // Metode untuk menampilkan antrian pasien
+if (patientQueue.isEmpty()) {                                                          // Memeriksa apakah antrian kosong
+System.out.println("No patients in queue.");                                           // Menampilkan pesan jika antrian kosong
+} else {                                                                               // Jika ada pasien dalam antrian
+System.out.println("\n--- Current Patient Queue ---");                                 // Header untuk bagian ini
+for (int i = 0; i < patientQueue.size(); i++) {                                        // Iterasi melalui daftar pasien
+Patient p = patientQueue.get(i);                                                       // Mendapatkan pasien pada posisi tertentu
+System.out.println((i + 1) + ". " + p.getName() +
                     " | Age: " + p.getAge() +
                     " | Condition: " + p.getCondition() +
-                    " | Priority: " + getPriorityText(p.getPriority())); // Menampilkan detail pasien
+                    " | Priority: " + getPriorityText(p.getPriority()));               // Menampilkan detail pasien
             }
         }
     }
