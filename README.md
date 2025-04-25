@@ -10,48 +10,48 @@ private static Scanner scanner = new Scanner(System.in);               // Membua
 public static void main(String[] args) {                              // Metode utama untuk menjalankan program
 boolean running = true;                                               // Variabel untuk menentukan apakah sistem masih berjalan
 
-System.out.println("Welcome to Hospital Queue Management System");    // Menampilkan pesan selamat datang
+System.out.println("Welcome to Hospital Queue Management System");    // Menampilkan pesan selamat datang, dengan teks "Welcome to Hospital Queue Management System"
 
 while (running) {                                                     // Loop utama untuk menjalankan menu sistem
 displayMenu(); // Memanggil metode untuk menampilkan menu
 int choice = getValidIntInput("Enter your choice: ");                // Membaca pilihan pengguna dengan validasi
 
-switch (choice) {                                                    // Memproses pilihan pengguna dengan struktur switch-case
-case 1:                           // Jika pilihan adalah 1, tambahkan pasien ke antrian
+switch (choice) {                 // Memproses pilihan yang nanti di inputkan oleh pengguna dengan struktur switch-case
+case 1:                          // Jika yang di inputkan angka 1, maka akan menambahkan pasien ke antrian
 addPatient(); 
 break;
-case 2:                          // Jika pilihan adalah 2, layani pasien berikutnya
+case 2:                          // Jika yang di inputkan angka 2, melayani pasien berikutnya
 serveNextPatient();
 break;
-case 3:                         // Jika pilihan adalah 3, tampilkan antrian pasien saat ini
+case 3:                         // Jika yang di inputkan angka 3, akan ditampilkan antrian pasien saat ini
 displayQueue();
 break;
-case 4:                        // Jika pilihan adalah 4, perbarui prioritas pasien
+case 4:                        // Jika yang di inputkan angka 4, memperbarui prioritas pasien 
 updatePriority();
 break;
-case 5:                       // Jika pilihan adalah 5, cari pasien berdasarkan nama
+case 5:                       // Jika  menginputkan angka 5, berarti mencari pasien berdasarkan nama 
 searchPatient();
 break;
-case 6:                      // Jika pilihan adalah 6, keluar dari sistem
+case 6:                      // Jika angka yang di input adalah 6, maka akan keluar dari sistem dan akan menampilkan pesan melalui System.out.println seperti kode dibawah
 System.out.println("Thank you for using Hospital Queue Management System. Goodbye!");
 
-running = false;                                                     // Mengubah variabel running menjadi false untuk keluar dari loop
+running = false;                                                     // Kode ini Mengubah variabel running menjadi false untuk keluar dari loop
 break;
-default:                                                            // Pilihan yang tidak valid
+default:                                                            // Jika ada inputan pilihan yang tidak valid maka akan menampilkan teks seperti ini
 System.out.println("Invalid choice. Please try again.");
   }
 }
-scanner.close();                                                   // Menutup objek Scanner untuk menghindari kebocoran sumber daya
+scanner.close();                                                   // Menutup pembaca input (Scanner) setelah selesai digunakan
   }
 
-private static void displayMenu() {                               // Metode untuk menampilkan menu sistem
-System.out.println("\n===== HOSPITAL QUEUE SYSTEM =====");        // Header menu
-System.out.println("1. Add a new patient to the queue");          // Pilihan untuk menambah pasien
-System.out.println("2. Serve next patient");                      // Pilihan untuk melayani pasien berikutnya
-System.out.println("3. Display current queue");                   // Pilihan untuk menampilkan antrian pasien
-System.out.println("4. Update patient priority");                 // Pilihan untuk memperbarui prioritas pasien
-System.out.println("5. Search for a patient");                    // Pilihan untuk mencari pasien
-System.out.println("6. Exit");                                    // Pilihan untuk keluar dari sistem
+private static void displayMenu() {                               // Metode untuk menampilkan menu sistem 
+System.out.println("\n===== HOSPITAL QUEUE SYSTEM =====");        // Mencetak header menu
+System.out.println("1. Add a new patient to the queue");          // mencetak keterangan Pilihan 1 untuk menambah pasien
+System.out.println("2. Serve next patient");                      // mencetak keterangan Pilihan 2 Pilihan untuk melayani pasien berikutnya
+System.out.println("3. Display current queue");                   // mencetak keterangan Pilihan 3 Pilihan untuk menampilkan antrian pasien
+System.out.println("4. Update patient priority");                 // mencetak keterangan Pilihan 4 Pilihan untuk memperbarui prioritas pasien
+System.out.println("5. Search for a patient");                    // mencetak keterangan Pilihan 5 Pilihan untuk mencari pasien
+System.out.println("6. Exit");                                    // mencetak keterangan Pilihan 6 Pilihan untuk keluar dari sistem
 System.out.println("=================================");          // Penutup menu
     }
 
